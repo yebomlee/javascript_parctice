@@ -7,7 +7,7 @@
 function greeting(name = '찌나', interest) {
   console.log(`Hi! My name is ${name}!`);
   console.log(`I like ${interest}!`);
-}
+};
 
 // argument가 parameter로 전달 될때에는 parameter의 기본값과는 전혀 상관없이 작성 순서대로 전달.
 // 기본값이 필요한 parameter는 가급적 오른편 작성 권장.
@@ -20,7 +20,7 @@ greeting(undefined, '츄르');
 function defaultTest(x, y = x + 2) {
   console.log(`x: ${x}`);
   console.log(`y: ${y}`);
-}
+};
 
 defaultTest(1); // 1, 3
 defaultTest(1, 5); // 1, 5
@@ -31,7 +31,7 @@ function printArguments(a, b, c) {
   console.log(a);
   console.log(b);
   console.log(c);
-}
+};
 
 // arguments 개수 < parameter 개수: undefined 값으로 출력.
 // arguments 개수 > parameter 개수: 그 이후 전달 된 argument 값 무시.
@@ -50,7 +50,7 @@ function printArguments(a, b, c) {
   // for of 반목문 활용 가능.
   for (const arg of arguments) {
     console.log(arg);
-  }
+  };
 
   // indexing
   console.log(arguments[0]);
@@ -58,7 +58,7 @@ function printArguments(a, b, c) {
 
   // argument 개수 확인 가능.
   console.log(arguments.length);
-}
+};
 
 printArguments('빨강', '주황', '노랑');
 printArguments('빨강');
@@ -72,10 +72,10 @@ function getFirstWords() {
 
   for (const arg of arguments) {
     word = word + arg[0];
-  }
+  };
 
   console.log(word);
-}
+};
 
 getFirstWords(
   '빨간색',
@@ -86,3 +86,37 @@ getFirstWords(
   '남색',
   '보라색'
 );
+
+
+// Rest Parameter(우선 활용 권장)
+// 배열이므로 배열의 method 사용 가능.
+// arguments 객체의 단점 해결.(배열 method 사용불가. 필요한 arguments만 다루려면 indexing 필요.)
+function printArguments(...args) {
+  for (const arg of args) {
+    console.log(arg);
+  }
+  console.log('');
+};
+
+function printArguments(...args) {
+  console.log(args.splice(0, 2)); // 배열 method 사용 가능
+  console.log(arguments.splice(0, 2)); // TypeError
+  console.log('');
+};
+
+printArguments('빨강', '주황', '노랑'); // ['빨강', '주황']
+printArguments('빨강');
+printArguments('빨강', '주황');
+printArguments('빨강', '주황', '노랑', '초록');
+
+// 일반 parameter와 함께 사용 가능(반드시 가장 마지막 parameter에 작성)
+function printResult(first, second, ...others) {
+  console.log('경품 추천 결과');
+  console.log(`1등: ${first}`);
+  console.log(`2등: ${second}`);
+  for (const arg of others) {
+    console.log(`꽝!: ${arg}`);
+  };
+};
+
+printResult('빨강이', '주황이', '노랑이', '초록이', '파랑이');
