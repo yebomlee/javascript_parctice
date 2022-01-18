@@ -115,3 +115,29 @@ users.forEach((user) => {
 // banana2@banana.com buys 양말
 // apple3@apple.com buys 양말
 // banana3@banana.com buys 양말
+
+
+// instanceof 연산자
+// 현재 변수가 가리키는 객체가 정확히 어느 class로 만들어진 객체인지 확인하고 싶을 때 활용.
+const users = [user1, premiumUser1, user2, premiumUser2, user3, premiumUser3];
+
+// 반복되는 user 객체가 PremiumUser class로 만든 객체인지 확인.
+users.forEach((user) => {
+  console.log(user instanceof PremiumUser); // PremiumUser class로 만든 객체들만 true로 출력.
+})
+
+// 자식 class로 만든 객체는 부모 class로 만든 객체로 인정.
+users.forEach((user) => {
+  console.log(user instanceof User); // 모두 true로 출력.
+})
+
+// (주의!) instanceof 연산자를 활용해서 로직을 분기하는 것 보다,
+// 두 class 사이에 상속 관계를 적용한 뒤 method 이름을 동일하게 만들어서 
+// 다형성을 활용한 코드, 로직 분기가 없는 코드를 작성하는 것이 더 바람직.
+if (obj instanceof A) {
+  obj.method_a(); // obj.common_method_name();
+} else if ( obj instanceof B) {
+  obj.method_b(); // obj.common_method_name();
+} else {
+  ...
+}
