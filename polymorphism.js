@@ -1,5 +1,5 @@
 // 다형성(많은 형태를 가지고 있는 성질)
-// 하나의 변수가 다양한 종류의 객체를 가르킬 수 있는 것.
+// 하나의 변수가 다양한 종류의 class로 만든 여러 객체를 가르킬 수 있는 것.
 // 다른 종류의 객체에 있는 동일한 method를 간결하게 호출 가능.
 // 상속 관계의 있는 여러 객체의 동일한 이름의 method를 간결한 코드로 호출 가능.
 class User {
@@ -20,6 +20,7 @@ class PremiumUser extends User {
 
   // 내용이 조금 다른 buy method 추가.
   // 오버라이딩(overriding): 자식 class에서 부모 class와 동일한 이름의 method를 정의하고 그 내용을 다르게 채우는 것.
+  // 같은 이름의 method를 호출하더라도 자식 class로 만든 객체는 부모 class로 만든 객체와 다르게 동작 가능.
   buy(item) {
     console.log(`${this.email} buys ${item.name} with a 5% discount`);
   }
