@@ -4,12 +4,12 @@
 function solution(element, index, array) {
   if (element === null) {
     console.log('400 ERROR');
-    return;
+    return true;
   }
 }
 
 const inputs = {
-  name: '코캠',
+  name: '찌나',
   contents: '안녕하세요.',
   title: null,
 };
