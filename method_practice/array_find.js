@@ -4,9 +4,7 @@
 const numbers = [1, 2, 3, 4, 5];
 
 function callBackFn(ele, idx, arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (ele === 5) return true;
-  }
+  if (ele === 5) return true;
 }
 
 let result = numbers.find(callBackFn);
